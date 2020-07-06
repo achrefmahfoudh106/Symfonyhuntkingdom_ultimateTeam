@@ -1,0 +1,21 @@
+ForumBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: ForumBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        image:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -1,6 +1,6 @@
-forum:
-    resource: "@ForumBundle/Resources/config/routing.yml"
-    prefix:   /
+addPost:
+    path:    /addPost
+    defaults: {_controller:ForumBundle:Post:addPost}
 
 app:
     resource: '@AppBundle/Controller/'
