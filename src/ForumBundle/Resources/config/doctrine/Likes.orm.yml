@@ -1,0 +1,16 @@
+ForumBundle\Entity\Likes:
+    type: entity
+    table: null
+    repositoryClass: ForumBundle\Repository\LikesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        value:
+            type: integer
+        createdAt:
+            type: date
+    lifecycleCallbacks: {  }

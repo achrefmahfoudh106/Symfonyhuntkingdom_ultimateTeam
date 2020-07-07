@@ -1,0 +1,20 @@
+ForumBundle\Entity\Comment:
+    type: entity
+    table: null
+    repositoryClass: ForumBundle\Repository\CommentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        text:
+            type: string
+            length: 255
+        createdAt:
+            type: string
+            length: 255
+        updatedAt:
+            type: date
+    lifecycleCallbacks: {  }

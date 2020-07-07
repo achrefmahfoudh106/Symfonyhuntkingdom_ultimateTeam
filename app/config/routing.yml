@@ -2,6 +2,57 @@ addPost:
     path:    /addPost
     defaults: {_controller:ForumBundle:Post:addPost}
 
+
+
+getPostById:
+    path:    /getPostById/{id}
+    defaults: {_controller:ForumBundle:Post:getPostById}
+
+
+
+listPost:
+    path:    /listPost
+    defaults: {_controller:ForumBundle:Post:listPost}
+
+
+deletePost:
+    path:    /deletePost/{id}
+    defaults: {_controller:ForumBundle:Post:deletePost}
+
+addComment:
+    path:    /addComment
+    defaults: {_controller:ForumBundle:Comment:addComment}
+
+getCommentById:
+    path:    /getCommentById/{id}
+    defaults: {_controller:ForumBundle:Comment:getCommentById}
+
+
+listComment:
+    path:    /listComment
+    defaults: {_controller:ForumBundle:Comment:listComment}
+
+deleteComment:
+    path:    /deleteComment/{id}
+    defaults: {_controller:ForumBundle:Comment:deleteComment}
+
+
+addLikes:
+    path:    /addLikes
+    defaults: {_controller:ForumBundle:Likes:addLikes}
+
+getLikeById:
+    path:    /getLikeById/{id}
+    defaults: {_controller:ForumBundle:Likes:getLikeById}
+
+listLikes:
+    path:    /listLikes
+    defaults: {_controller:ForumBundle:Likes:listLikes}
+
+deleteLike:
+    path:    /deleteLike/{id}
+    defaults: {_controller:ForumBundle:Likes:deleteLike}
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

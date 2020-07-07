@@ -2,33 +2,28 @@
 
 namespace ForumBundle\Controller;
 
-use AppBundle\AppBundle;
-use ForumBundle\Entity\Post;
+use ForumBundle\Entity\Likes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Post controller.
- *
- */
-class PostController extends Controller
+class LikesController extends Controller
 {
     /**
-     * Lists all post entities.
+     * Lists all comment entities.
      *
      */
-    public function listPostAction()
+    public function listLikesAction()
     {
 
-        $posts=$this->getDoctrine()->getRepository('ForumBundle:Post')->findAll();
+        $likes=$this->getDoctrine()->getRepository('ForumBundle:Likes')->findAll();
 
-        if (!count($posts)){
+        if (!count($likes)){
             $response=array(
 
                 'code'=>1,
-                'message'=>'No posts found!',
+                'message'=>'No likes found!',
                 'errors'=>null,
                 'result'=>null
 
@@ -39,7 +34,7 @@ class PostController extends Controller
         }
 
 
-        $data=$this->get('jms_serializer')->serialize($posts,'json');
+        $data=$this->get('jms_serializer')->serialize($likes,'json');
 
         $response=array(
 
@@ -54,17 +49,16 @@ class PostController extends Controller
 
 
     }
-
     /**
-     * Creates a new post entity.
+     * Creates a new likes entity.
      *
      */
-    public function addPostAction(Request $request)
+    public function addLikesAction(Request $request)
     {
 
         $data=$request->getContent();
 
-        $post=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Post','json');
+        $likes=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Likes','json');
 
 
         if (!empty($reponse)){
@@ -72,14 +66,14 @@ class PostController extends Controller
         }
 
         $em=$this->getDoctrine()->getManager();
-        $em->persist($post);
+        $em->persist($likes);
         $em->flush();
 
 
         $response=array(
 
             'code'=>0,
-            'message'=>'Post created!',
+            'message'=>'like created!',
             'errors'=>null,
             'result'=>null
 
@@ -95,43 +89,28 @@ class PostController extends Controller
      * Finds and displays a post entity.
      *
      */
-    public function getPostByIdAction(Post $post)
+    public function getLikeByIdAction(Likes $like)
     {
-        $data=$this->get('jms_serializer')->serialize($post,'json');
+        $data=$this->get('jms_serializer')->serialize($like,'json');
         $response = new Response($data);
         return $response;
 
     }
 
     /**
-     * Displays a form to edit an existing post entity.
-     *
-     */
-     public function editPostAction(Request $request,$id)
-     {
-     $doctrine=$this->getDoctrine()->getManager();
-         $entity=$doctrine->getRepository("ForumBndle:Post");
-         $data=$request->getContent();
-         $post=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Post','json');
-
-
-
-
-     }
-    /**
      * Deletes a post entity.
      *
      */
-    public function deletePostAction($id)
+    public function deleteLikeAction($id)
     {
-        $post=$this->getDoctrine()->getRepository('ForumBundle:Post')->find($id);
+        $like=$this->getDoctrine()->getRepository('ForumBundle:Likes')->find($id);
 
-        if (empty($post)) {
+        if (empty($like)) {
 
             $response=array(
 
                 'code'=>1,
-                'message'=>'post Not found !',
+                'message'=>'like Not found !',
                 'errors'=>null,
                 'result'=>null
 
@@ -142,12 +121,12 @@ class PostController extends Controller
         }
 
         $em=$this->getDoctrine()->getManager();
-        $em->remove($post);
+        $em->remove($like);
         $em->flush();
         $response=array(
 
             'code'=>0,
-            'message'=>'post deleted !',
+            'message'=>'like deleted !',
             'errors'=>null,
             'result'=>null
 

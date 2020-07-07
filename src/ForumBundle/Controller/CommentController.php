@@ -2,33 +2,28 @@
 
 namespace ForumBundle\Controller;
 
-use AppBundle\AppBundle;
-use ForumBundle\Entity\Post;
+use ForumBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Post controller.
- *
- */
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
-     * Lists all post entities.
+     * Lists all comment entities.
      *
      */
-    public function listPostAction()
+    public function listCommentAction()
     {
 
-        $posts=$this->getDoctrine()->getRepository('ForumBundle:Post')->findAll();
+        $comments=$this->getDoctrine()->getRepository('ForumBundle:Comment')->findAll();
 
-        if (!count($posts)){
+        if (!count($comments)){
             $response=array(
 
                 'code'=>1,
-                'message'=>'No posts found!',
+                'message'=>'No comments found!',
                 'errors'=>null,
                 'result'=>null
 
@@ -39,7 +34,7 @@ class PostController extends Controller
         }
 
 
-        $data=$this->get('jms_serializer')->serialize($posts,'json');
+        $data=$this->get('jms_serializer')->serialize($comments,'json');
 
         $response=array(
 
@@ -56,15 +51,15 @@ class PostController extends Controller
     }
 
     /**
-     * Creates a new post entity.
+     * Creates a new comment entity.
      *
      */
-    public function addPostAction(Request $request)
+    public function addCommentAction(Request $request)
     {
 
         $data=$request->getContent();
 
-        $post=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Post','json');
+        $comment=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Comment','json');
 
 
         if (!empty($reponse)){
@@ -72,14 +67,14 @@ class PostController extends Controller
         }
 
         $em=$this->getDoctrine()->getManager();
-        $em->persist($post);
+        $em->persist($comment);
         $em->flush();
 
 
         $response=array(
 
             'code'=>0,
-            'message'=>'Post created!',
+            'message'=>'Comment created!',
             'errors'=>null,
             'result'=>null
 
@@ -95,43 +90,28 @@ class PostController extends Controller
      * Finds and displays a post entity.
      *
      */
-    public function getPostByIdAction(Post $post)
+    public function getCommentByIdAction(Comment $comment)
     {
-        $data=$this->get('jms_serializer')->serialize($post,'json');
+        $data=$this->get('jms_serializer')->serialize($comment,'json');
         $response = new Response($data);
         return $response;
 
     }
 
     /**
-     * Displays a form to edit an existing post entity.
-     *
-     */
-     public function editPostAction(Request $request,$id)
-     {
-     $doctrine=$this->getDoctrine()->getManager();
-         $entity=$doctrine->getRepository("ForumBndle:Post");
-         $data=$request->getContent();
-         $post=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Post','json');
-
-
-
-
-     }
-    /**
      * Deletes a post entity.
      *
      */
-    public function deletePostAction($id)
+    public function deleteCommentAction($id)
     {
-        $post=$this->getDoctrine()->getRepository('ForumBundle:Post')->find($id);
+        $comment=$this->getDoctrine()->getRepository('ForumBundle:Comment')->find($id);
 
-        if (empty($post)) {
+        if (empty($comment)) {
 
             $response=array(
 
                 'code'=>1,
-                'message'=>'post Not found !',
+                'message'=>'comment Not found !',
                 'errors'=>null,
                 'result'=>null
 
@@ -142,12 +122,12 @@ class PostController extends Controller
         }
 
         $em=$this->getDoctrine()->getManager();
-        $em->remove($post);
+        $em->remove($comment);
         $em->flush();
         $response=array(
 
             'code'=>0,
-            'message'=>'post deleted !',
+            'message'=>'comment deleted !',
             'errors'=>null,
             'result'=>null
 
