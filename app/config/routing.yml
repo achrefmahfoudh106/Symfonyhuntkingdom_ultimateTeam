@@ -8,6 +8,10 @@ getPostById:
     path:    /getPostById/{id}
     defaults: {_controller:ForumBundle:Post:getPostById}
 
+editPost:
+    path:    /editPost/{id}
+    defaults: {_controller:ForumBundle:Post:editPost}
+
 
 
 listPost:
@@ -27,6 +31,10 @@ getCommentById:
     path:    /getCommentById/{id}
     defaults: {_controller:ForumBundle:Comment:getCommentById}
 
+editComment:
+    path:    /editComment/{id}
+    defaults: {_controller:ForumBundle:Comment:editComment}
+
 
 listComment:
     path:    /listComment
@@ -44,6 +52,10 @@ addLikes:
 getLikeById:
     path:    /getLikeById/{id}
     defaults: {_controller:ForumBundle:Likes:getLikeById}
+
+editLike:
+    path:    /editLike/{id}
+    defaults: {_controller:ForumBundle:Likes:editLike}
 
 listLikes:
     path:    /listLikes

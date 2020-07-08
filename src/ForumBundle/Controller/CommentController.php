@@ -86,6 +86,29 @@ class CommentController extends Controller
 
     }
 
+
+    public function editCommentAction(Request $request,$id)
+    {
+
+        $doctrine=$this->getDoctrine();
+        $manger=$doctrine->getManager();
+        $comment=$doctrine->getRepository("ForumBundle:Comment")->find($id);
+        $data=$request->getContent();
+
+        $entity=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Comment','json');
+
+        $comment->setText($entity->getText());
+        $comment->setCreatedAt($entity->getCreatedAt());
+        $comment->setUpdatedAt($entity->getUpdatedAt());
+
+
+        $manger->persist($comment);
+        $manger->flush();
+
+        return new  JsonResponse(['message'=>'success'],200);
+
+    }
+
     /**
      * Finds and displays a post entity.
      *

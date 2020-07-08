@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class LikesController extends Controller
 {
     /**
-     * Lists all comment entities.
+     * Lists all likes entities.
      *
      */
     public function listLikesAction()
@@ -85,8 +85,30 @@ class LikesController extends Controller
 
     }
 
+
+    public function editLikeAction(Request $request,$id)
+    {
+
+        $doctrine=$this->getDoctrine();
+        $manger=$doctrine->getManager();
+        $like=$doctrine->getRepository("ForumBundle:Likes")->find($id);
+        $data=$request->getContent();
+
+        $entity=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Likes','json');
+
+        $like->setValue($entity->getValue());
+        $like->setCreatedAt($entity->getCreatedAt());
+
+
+        $manger->persist($like);
+        $manger->flush();
+
+        return new  JsonResponse(['message'=>'success'],200);
+
+    }
+
     /**
-     * Finds and displays a post entity.
+     * Finds and displays a like entity.
      *
      */
     public function getLikeByIdAction(Likes $like)
@@ -98,7 +120,7 @@ class LikesController extends Controller
     }
 
     /**
-     * Deletes a post entity.
+     * Deletes a like entity.
      *
      */
     public function deleteLikeAction($id)

@@ -109,13 +109,22 @@ class PostController extends Controller
      */
      public function editPostAction(Request $request,$id)
      {
-     $doctrine=$this->getDoctrine()->getManager();
-         $entity=$doctrine->getRepository("ForumBndle:Post");
-         $data=$request->getContent();
-         $post=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Post','json');
 
+     $doctrine=$this->getDoctrine();
+     $manger=$doctrine->getManager();
+     $post=$doctrine->getRepository("ForumBundle:Post")->find($id);
+     $data=$request->getContent();
 
+         $entity=$this->get('jms_serializer')->deserialize($data,'ForumBundle\Entity\Post','json');
 
+         $post->setName($entity->getName());
+         $post->setDescription($entity->getDescription());
+         $post->setImage($entity->getImage());
+
+         $manger->persist($post);
+         $manger->flush();
+
+         return new  JsonResponse(['message'=>'success'],200);
 
      }
     /**
