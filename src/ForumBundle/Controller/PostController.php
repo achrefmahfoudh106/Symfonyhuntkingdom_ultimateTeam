@@ -15,10 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class PostController extends Controller
 {
-    /**
-     * Lists all post entities.
-     *
-     */
+
     public function listPostAction()
     {
 

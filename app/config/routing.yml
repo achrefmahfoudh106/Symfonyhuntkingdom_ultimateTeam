@@ -19,6 +19,7 @@ listPost:
     defaults: {_controller:ForumBundle:Post:listPost}
 
 
+
 deletePost:
     path:    /deletePost/{id}
     defaults: {_controller:ForumBundle:Post:deletePost}
@@ -68,3 +69,7 @@ deleteLike:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
