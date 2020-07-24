@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7fcbcb7bd980a9a8dd30266edd14a9c8428240a5',
+    'reference' => 'ae5f048935524e3aa08c7d1d079e1de107361de1',
     'name' => 'symfony/framework-standard-edition',
   ),
   'versions' => 
@@ -136,6 +136,15 @@
       array (
       ),
       'reference' => 'c038ee75ca13663ddc2d1f185fe6f7533c00832a',
+    ),
+    'friendsofsymfony/user-bundle' => 
+    array (
+      'pretty_version' => 'v2.1.2',
+      'version' => '2.1.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1049935edd24ec305cc6cfde1875372fa9600446',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -692,7 +701,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7fcbcb7bd980a9a8dd30266edd14a9c8428240a5',
+      'reference' => 'ae5f048935524e3aa08c7d1d079e1de107361de1',
     ),
     'symfony/http-foundation' => 
     array (

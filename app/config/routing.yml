@@ -1,3 +1,15 @@
+event:
+    resource: "@EventBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+product:
+    resource: "@ProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+
 addPost:
     path:    /addPost
     defaults: {_controller:ForumBundle:Post:addPost}
@@ -65,6 +77,58 @@ listLikes:
 deleteLike:
     path:    /deleteLike/{id}
     defaults: {_controller:ForumBundle:Likes:deleteLike}
+
+
+
+
+addProduct:
+    path:    /addProduct
+    defaults: {_controller:ProductBundle:ProductController:addProduct}
+
+
+getProductById:
+    path:    /getProductById/{id}
+    defaults: {_controller:ProductBundle:ProductController:getProductById}
+
+editProduct:
+    path:    /editProduct/{id}
+    defaults: {_controller:ProductBundle:ProductController:editProduct}
+
+listProduct:
+    path:    /listProduct
+    defaults: {_controller:ProductBundle:ProductController:listProduct}
+
+deleteProduct:
+    path:    /deleteProduct/{id}
+    defaults: {_controller:ProductBundle:ProductController:deleteProduct}
+
+
+
+
+addEvent:
+    path:    /addEvent
+    defaults: {_controller:EventBundle:Event:addEvent}
+
+
+getEventById:
+    path:    /getEventById/{id}
+    defaults: {_controller:EventBundle:EventController:getEventById}
+
+editEvent:
+    path:    /editEvent/{id}
+    defaults: {_controller:EventBundle:Event:editEvent}
+
+listEvent:
+    path:    /listEvent
+    defaults: {_controller:EventBundle:Event:listEvent}
+
+deleteEvent:
+    path:    /deleteEvent/{id}
+    defaults: {_controller:EventBundle:Event:deleteEvent}
+
+
+
+
 
 app:
     resource: '@AppBundle/Controller/'
