@@ -109,9 +109,9 @@ class EventController extends Controller
 
         $entity=$this->get('jms_serializer')->deserialize($data,'EventBundle\Entity\Event','json');
 
-        $event->setName($entity->getName());
+        
         $event->setDescription($entity->getDescription());
-        $event->setImage($entity->getImage());
+        $event->setTitle($entity->getTitle());
 
         $manger->persist($event);
         $manger->flush();

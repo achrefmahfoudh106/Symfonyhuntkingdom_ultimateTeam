@@ -137,47 +137,55 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_product_default_index:
 
-        if (0 === strpos($pathinfo, '/add')) {
-            // addPost
-            if ('/addPost' === $pathinfo) {
-                return array (  '_controller' => 'ForumBundle\\Controller\\PostController::addPostAction',  '_route' => 'addPost',);
+        if (0 === strpos($pathinfo, '/a')) {
+            if (0 === strpos($pathinfo, '/add')) {
+                // addPost
+                if ('/addPost' === $pathinfo) {
+                    return array (  '_controller' => 'ForumBundle\\Controller\\PostController::addPostAction',  '_route' => 'addPost',);
+                }
+
+                // addProduct
+                if ('/addProduct' === $pathinfo) {
+                    return array (  '_controller' => 'ProductBundle\\Controller\\ProductControllerController::addProductAction',  '_route' => 'addProduct',);
+                }
+
+                // addComment
+                if ('/addComment' === $pathinfo) {
+                    return array (  '_controller' => 'ForumBundle\\Controller\\CommentController::addCommentAction',  '_route' => 'addComment',);
+                }
+
+                // addLikes
+                if ('/addLikes' === $pathinfo) {
+                    return array (  '_controller' => 'ForumBundle\\Controller\\LikesController::addLikesAction',  '_route' => 'addLikes',);
+                }
+
+                // addEvent
+                if ('/addEvent' === $pathinfo) {
+                    return array (  '_controller' => 'EventBundle\\Controller\\EventController::addEventAction',  '_route' => 'addEvent',);
+                }
+
             }
 
-            // addProduct
-            if ('/addProduct' === $pathinfo) {
-                return array (  '_controller' => 'ProductBundle\\Controller\\ProductControllerController::addProductAction',  '_route' => 'addProduct',);
+            // api_login_check
+            if ('/api/login_check' === $pathinfo) {
+                return ['_route' => 'api_login_check'];
             }
 
-            // addComment
-            if ('/addComment' === $pathinfo) {
-                return array (  '_controller' => 'ForumBundle\\Controller\\CommentController::addCommentAction',  '_route' => 'addComment',);
-            }
+            // nelmio_api_doc_index
+            if (0 === strpos($pathinfo, '/api/doc') && preg_match('#^/api/doc(?:/(?P<view>[^/]++))?$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'nelmio_api_doc_index']), array (  '_controller' => 'Nelmio\\ApiDocBundle\\Controller\\ApiDocController::indexAction',  'view' => 'default',));
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
+                    goto not_nelmio_api_doc_index;
+                }
 
-            // addLikes
-            if ('/addLikes' === $pathinfo) {
-                return array (  '_controller' => 'ForumBundle\\Controller\\LikesController::addLikesAction',  '_route' => 'addLikes',);
+                return $ret;
             }
-
-            // addEvent
-            if ('/addEvent' === $pathinfo) {
-                return array (  '_controller' => 'EventBundle\\Controller\\EventController::addEventAction',  '_route' => 'addEvent',);
-            }
+            not_nelmio_api_doc_index:
 
         }
 
-        // nelmio_api_doc_index
-        if (0 === strpos($pathinfo, '/api/doc') && preg_match('#^/api/doc(?:/(?P<view>[^/]++))?$#sD', $pathinfo, $matches)) {
-            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'nelmio_api_doc_index']), array (  '_controller' => 'Nelmio\\ApiDocBundle\\Controller\\ApiDocController::indexAction',  'view' => 'default',));
-            if (!in_array($canonicalMethod, ['GET'])) {
-                $allow = array_merge($allow, ['GET']);
-                goto not_nelmio_api_doc_index;
-            }
-
-            return $ret;
-        }
-        not_nelmio_api_doc_index:
-
-        if (0 === strpos($pathinfo, '/get')) {
+        elseif (0 === strpos($pathinfo, '/get')) {
             // getPostById
             if (0 === strpos($pathinfo, '/getPostById') && preg_match('#^/getPostById/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'getPostById']), array (  '_controller' => 'ForumBundle\\Controller\\PostController::getPostByIdAction',));
@@ -233,31 +241,73 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/list')) {
-            // listPost
-            if ('/listPost' === $pathinfo) {
-                return array (  '_controller' => 'ForumBundle\\Controller\\PostController::listPostAction',  '_route' => 'listPost',);
+        elseif (0 === strpos($pathinfo, '/l')) {
+            if (0 === strpos($pathinfo, '/list')) {
+                // listPost
+                if ('/listPost' === $pathinfo) {
+                    return array (  '_controller' => 'ForumBundle\\Controller\\PostController::listPostAction',  '_route' => 'listPost',);
+                }
+
+                // listProduct
+                if ('/listProduct' === $pathinfo) {
+                    return array (  '_controller' => 'ProductBundle\\Controller\\ProductControllerController::listProductAction',  '_route' => 'listProduct',);
+                }
+
+                // listComment
+                if ('/listComment' === $pathinfo) {
+                    return array (  '_controller' => 'ForumBundle\\Controller\\CommentController::listCommentAction',  '_route' => 'listComment',);
+                }
+
+                // listLikes
+                if ('/listLikes' === $pathinfo) {
+                    return array (  '_controller' => 'ForumBundle\\Controller\\LikesController::listLikesAction',  '_route' => 'listLikes',);
+                }
+
+                // listEvent
+                if ('/listEvent' === $pathinfo) {
+                    return array (  '_controller' => 'EventBundle\\Controller\\EventController::listEventAction',  '_route' => 'listEvent',);
+                }
+
             }
 
-            // listProduct
-            if ('/listProduct' === $pathinfo) {
-                return array (  '_controller' => 'ProductBundle\\Controller\\ProductControllerController::listProductAction',  '_route' => 'listProduct',);
+            elseif (0 === strpos($pathinfo, '/login')) {
+                // fos_user_security_login
+                if ('/login' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_fos_user_security_login;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_security_login:
+
+                // fos_user_security_check
+                if ('/login_check' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.security.controller:checkAction',  '_route' => 'fos_user_security_check',);
+                    if (!in_array($requestMethod, ['POST'])) {
+                        $allow = array_merge($allow, ['POST']);
+                        goto not_fos_user_security_check;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_security_check:
+
             }
 
-            // listComment
-            if ('/listComment' === $pathinfo) {
-                return array (  '_controller' => 'ForumBundle\\Controller\\CommentController::listCommentAction',  '_route' => 'listComment',);
-            }
+            // fos_user_security_logout
+            if ('/logout' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.security.controller:logoutAction',  '_route' => 'fos_user_security_logout',);
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_fos_user_security_logout;
+                }
 
-            // listLikes
-            if ('/listLikes' === $pathinfo) {
-                return array (  '_controller' => 'ForumBundle\\Controller\\LikesController::listLikesAction',  '_route' => 'listLikes',);
+                return $ret;
             }
-
-            // listEvent
-            if ('/listEvent' === $pathinfo) {
-                return array (  '_controller' => 'EventBundle\\Controller\\EventController::listEventAction',  '_route' => 'listEvent',);
-            }
+            not_fos_user_security_logout:
 
         }
 
@@ -303,6 +353,166 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $ret;
         }
         not_homepage:
+
+        if (0 === strpos($pathinfo, '/profile')) {
+            // fos_user_profile_show
+            if ('/profile' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'fos_user.profile.controller:showAction',  '_route' => 'fos_user_profile_show',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_fos_user_profile_show;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_profile_show'));
+                }
+
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
+                    goto not_fos_user_profile_show;
+                }
+
+                return $ret;
+            }
+            not_fos_user_profile_show:
+
+            // fos_user_profile_edit
+            if ('/profile/edit' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.profile.controller:editAction',  '_route' => 'fos_user_profile_edit',);
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_fos_user_profile_edit;
+                }
+
+                return $ret;
+            }
+            not_fos_user_profile_edit:
+
+            // fos_user_change_password
+            if ('/profile/change-password' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.change_password.controller:changePasswordAction',  '_route' => 'fos_user_change_password',);
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_fos_user_change_password;
+                }
+
+                return $ret;
+            }
+            not_fos_user_change_password:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/register')) {
+            // fos_user_registration_register
+            if ('/register' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'fos_user.registration.controller:registerAction',  '_route' => 'fos_user_registration_register',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_fos_user_registration_register;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_registration_register'));
+                }
+
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_fos_user_registration_register;
+                }
+
+                return $ret;
+            }
+            not_fos_user_registration_register:
+
+            // fos_user_registration_check_email
+            if ('/register/check-email' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.registration.controller:checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
+                    goto not_fos_user_registration_check_email;
+                }
+
+                return $ret;
+            }
+            not_fos_user_registration_check_email:
+
+            if (0 === strpos($pathinfo, '/register/confirm')) {
+                // fos_user_registration_confirm
+                if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirm']), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_fos_user_registration_confirm;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_registration_confirm:
+
+                // fos_user_registration_confirmed
+                if ('/register/confirmed' === $pathinfo) {
+                    $ret = array (  '_controller' => 'fos_user.registration.controller:confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_fos_user_registration_confirmed;
+                    }
+
+                    return $ret;
+                }
+                not_fos_user_registration_confirmed:
+
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/resetting')) {
+            // fos_user_resetting_request
+            if ('/resetting/request' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.resetting.controller:requestAction',  '_route' => 'fos_user_resetting_request',);
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
+                    goto not_fos_user_resetting_request;
+                }
+
+                return $ret;
+            }
+            not_fos_user_resetting_request:
+
+            // fos_user_resetting_reset
+            if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_reset']), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_fos_user_resetting_reset;
+                }
+
+                return $ret;
+            }
+            not_fos_user_resetting_reset:
+
+            // fos_user_resetting_send_email
+            if ('/resetting/send-email' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.resetting.controller:sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
+                if (!in_array($requestMethod, ['POST'])) {
+                    $allow = array_merge($allow, ['POST']);
+                    goto not_fos_user_resetting_send_email;
+                }
+
+                return $ret;
+            }
+            not_fos_user_resetting_send_email:
+
+            // fos_user_resetting_check_email
+            if ('/resetting/check-email' === $pathinfo) {
+                $ret = array (  '_controller' => 'fos_user.resetting.controller:checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
+                    goto not_fos_user_resetting_check_email;
+                }
+
+                return $ret;
+            }
+            not_fos_user_resetting_check_email:
+
+        }
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();

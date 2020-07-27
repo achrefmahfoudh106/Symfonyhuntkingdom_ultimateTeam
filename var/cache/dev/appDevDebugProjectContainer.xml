@@ -19,6 +19,7 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="ForumBundle">ForumBundle\ForumBundle</parameter>
       <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
+      <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="NelmioApiDocBundle">Nelmio\ApiDocBundle\NelmioApiDocBundle</parameter>
       <parameter key="NelmioCorsBundle">Nelmio\CorsBundle\NelmioCorsBundle</parameter>
       <parameter key="ProductBundle">ProductBundle\ProductBundle</parameter>
@@ -79,6 +80,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">C:\wamp64\www\huntkingdom\vendor\jms\serializer-bundle</parameter>
         <parameter key="namespace">JMS\SerializerBundle</parameter>
+      </parameter>
+      <parameter key="FOSUserBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle</parameter>
+        <parameter key="namespace">FOS\UserBundle</parameter>
       </parameter>
       <parameter key="NelmioApiDocBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -190,6 +196,14 @@
     <parameter key="router.cache_class_prefix">appDevDebugProjectContainer</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
+    <parameter key="security.authentication.trust_resolver.anonymous_class">Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</parameter>
+    <parameter key="security.authentication.trust_resolver.rememberme_class">Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</parameter>
+    <parameter key="security.role_hierarchy.roles" type="collection"/>
+    <parameter key="security.access.denied_url">null</parameter>
+    <parameter key="security.authentication.manager.erase_credentials">true</parameter>
+    <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
+    <parameter key="security.access.always_authenticate_before_granting">false</parameter>
+    <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
@@ -406,6 +420,48 @@
     <parameter key="jms_serializer.accessor_strategy.default.class">JMS\Serializer\Accessor\DefaultAccessorStrategy</parameter>
     <parameter key="jms_serializer.accessor_strategy.expression.class">JMS\Serializer\Accessor\ExpressionAccessorStrategy</parameter>
     <parameter key="jms_serializer.cache.cache_warmer.class">JMS\SerializerBundle\Cache\CacheWarmer</parameter>
+    <parameter key="fos_user.backend_type_orm">true</parameter>
+    <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
+    <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
+    <parameter key="fos_user.resetting.email.template">@FOSUser/Resetting/email.txt.twig</parameter>
+    <parameter key="fos_user.registration.confirmation.template">@FOSUser/Registration/email.txt.twig</parameter>
+    <parameter key="fos_user.storage">orm</parameter>
+    <parameter key="fos_user.firewall_name">main</parameter>
+    <parameter key="fos_user.model_manager_name">null</parameter>
+    <parameter key="fos_user.model.user.class">AppBundle\Entity\User</parameter>
+    <parameter key="fos_user.profile.form.type">FOS\UserBundle\Form\Type\ProfileFormType</parameter>
+    <parameter key="fos_user.profile.form.name">fos_user_profile_form</parameter>
+    <parameter key="fos_user.profile.form.validation_groups" type="collection">
+      <parameter>Profile</parameter>
+      <parameter>Default</parameter>
+    </parameter>
+    <parameter key="fos_user.registration.confirmation.from_email" type="collection">
+      <parameter key="name@name">name</parameter>
+    </parameter>
+    <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
+    <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
+    <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
+    <parameter key="fos_user.registration.form.validation_groups" type="collection">
+      <parameter>Registration</parameter>
+      <parameter>Default</parameter>
+    </parameter>
+    <parameter key="fos_user.change_password.form.type">FOS\UserBundle\Form\Type\ChangePasswordFormType</parameter>
+    <parameter key="fos_user.change_password.form.name">fos_user_change_password_form</parameter>
+    <parameter key="fos_user.change_password.form.validation_groups" type="collection">
+      <parameter>ChangePassword</parameter>
+      <parameter>Default</parameter>
+    </parameter>
+    <parameter key="fos_user.resetting.email.from_email" type="collection">
+      <parameter key="name@name">name</parameter>
+    </parameter>
+    <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
+    <parameter key="fos_user.resetting.token_ttl">86400</parameter>
+    <parameter key="fos_user.resetting.form.type">FOS\UserBundle\Form\Type\ResettingFormType</parameter>
+    <parameter key="fos_user.resetting.form.name">fos_user_resetting_form</parameter>
+    <parameter key="fos_user.resetting.form.validation_groups" type="collection">
+      <parameter>ResetPassword</parameter>
+      <parameter>Default</parameter>
+    </parameter>
     <parameter key="nelmio_api_doc.motd.template">@NelmioApiDoc/Components/motd.html.twig</parameter>
     <parameter key="nelmio_api_doc.exclude_sections" type="collection"/>
     <parameter key="nelmio_api_doc.default_sections_opened">true</parameter>
@@ -536,6 +592,10 @@
         <parameter>translation</parameter>
         <parameter>@WebProfiler/Collector/translation.html.twig</parameter>
       </parameter>
+      <parameter key="data_collector.security" type="collection">
+        <parameter>security</parameter>
+        <parameter>@Security/Collector/security.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.twig" type="collection">
         <parameter>twig</parameter>
         <parameter>@WebProfiler/Collector/twig.html.twig</parameter>
@@ -578,6 +638,7 @@
       <parameter key="console.command.symfony_bundle_frameworkbundle_command_xlifflintcommand">console.command.xliff_lint</parameter>
       <parameter key="console.command.symfony_bundle_frameworkbundle_command_yamllintcommand">console.command.yaml_lint</parameter>
       <parameter key="console.command.symfony_component_form_command_debugcommand">console.command.form_debug</parameter>
+      <parameter key="console.command.symfony_bundle_securitybundle_command_userpasswordencodercommand">security.command.user_password_encoder</parameter>
       <parameter key="console.command.symfony_bridge_twig_command_debugcommand">twig.command.debug</parameter>
       <parameter key="console.command.symfony_bundle_twigbundle_command_lintcommand">twig.command.lint</parameter>
       <parameter key="console.command.doctrine_bundle_doctrinecachebundle_command_containscommand">console.command.doctrine_bundle_doctrinecachebundle_command_containscommand</parameter>
@@ -604,6 +665,12 @@
       <parameter key="console.command.doctrine_bundle_doctrinebundle_command_proxy_updateschemadoctrinecommand">doctrine.schema_update_command</parameter>
       <parameter key="console.command.doctrine_bundle_doctrinebundle_command_proxy_validateschemacommand">doctrine.schema_validate_command</parameter>
       <parameter key="console.command.doctrine_bundle_doctrinebundle_command_importmappingdoctrinecommand">doctrine.mapping_import_command</parameter>
+      <parameter key="console.command.fos_userbundle_command_activateusercommand">fos_user.command.activate_user</parameter>
+      <parameter key="console.command.fos_userbundle_command_changepasswordcommand">fos_user.command.change_password</parameter>
+      <parameter key="console.command.fos_userbundle_command_createusercommand">fos_user.command.create_user</parameter>
+      <parameter key="console.command.fos_userbundle_command_deactivateusercommand">fos_user.command.deactivate_user</parameter>
+      <parameter key="console.command.fos_userbundle_command_demoteusercommand">fos_user.command.demote_user</parameter>
+      <parameter key="console.command.fos_userbundle_command_promoteusercommand">fos_user.command.promote_user</parameter>
       <parameter key="console.command.sensiolabs_security_command_securitycheckercommand">sensio_distribution.security_checker.command</parameter>
       <parameter key="console.command.symfony_bundle_webserverbundle_command_serverruncommand">web_server.command.server_run</parameter>
       <parameter key="console.command.symfony_bundle_webserverbundle_command_serverstartcommand">web_server.command.server_start</parameter>
@@ -630,6 +697,7 @@
       <parameter key="console.command.xliff_lint">true</parameter>
       <parameter key="console.command.yaml_lint">true</parameter>
       <parameter key="console.command.form_debug">true</parameter>
+      <parameter key="security.command.user_password_encoder">true</parameter>
       <parameter key="twig.command.debug">true</parameter>
       <parameter key="twig.command.lint">true</parameter>
       <parameter key="doctrine.database_create_command">true</parameter>
@@ -652,6 +720,12 @@
       <parameter key="doctrine.schema_update_command">true</parameter>
       <parameter key="doctrine.schema_validate_command">true</parameter>
       <parameter key="doctrine.mapping_import_command">true</parameter>
+      <parameter key="fos_user.command.activate_user">true</parameter>
+      <parameter key="fos_user.command.change_password">true</parameter>
+      <parameter key="fos_user.command.create_user">true</parameter>
+      <parameter key="fos_user.command.deactivate_user">true</parameter>
+      <parameter key="fos_user.command.demote_user">true</parameter>
+      <parameter key="fos_user.command.promote_user">true</parameter>
       <parameter key="sensio_distribution.security_checker.command">true</parameter>
       <parameter key="web_server.command.server_run">true</parameter>
       <parameter key="web_server.command.server_start">true</parameter>
@@ -774,6 +848,7 @@
         <argument key="debug.validator" type="service" id="debug.validator" on-invalid="ignore_uninitialized"/>
         <argument key="debug.stopwatch" type="service" id="debug.stopwatch" on-invalid="ignore_uninitialized"/>
         <argument key="debug.event_dispatcher" type="service" id="debug.event_dispatcher" on-invalid="ignore_uninitialized"/>
+        <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore_uninitialized"/>
         <argument key="monolog.handler.main" type="service" id="monolog.handler.main" on-invalid="ignore_uninitialized"/>
         <argument key="monolog.handler.console" type="service" id="monolog.handler.console" on-invalid="ignore_uninitialized"/>
         <argument key="monolog.handler.server_log" type="service" id="monolog.handler.server_log" on-invalid="ignore_uninitialized"/>
@@ -789,6 +864,7 @@
         <argument key="debug.validator">reset</argument>
         <argument key="debug.stopwatch">reset</argument>
         <argument key="debug.event_dispatcher">reset</argument>
+        <argument key="security.token_storage">setToken</argument>
         <argument key="monolog.handler.main">reset</argument>
         <argument key="monolog.handler.console">reset</argument>
         <argument key="monolog.handler.server_log">reset</argument>
@@ -951,12 +1027,18 @@
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
+        <argument>FOS\UserBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
+        <argument>FOS\UserBundle\Form\Type\UsernameFormType</argument>
+        <argument>FOS\UserBundle\Form\Type\ProfileFormType</argument>
+        <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
+        <argument>FOS\UserBundle\Form\Type\ChangePasswordFormType</argument>
+        <argument>FOS\UserBundle\Form\Type\ResettingFormType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1173,7 +1255,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.hnwz.wz"/>
+      <argument type="service" id="service_locator.2na.p6f"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1448,6 +1530,7 @@
       <call method="addXmlMappings">
         <argument type="collection">
           <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
+          <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1459,7 +1542,11 @@
       <call method="addObjectInitializers">
         <argument type="collection">
           <argument type="service" id="doctrine.orm.validator_initializer"/>
+          <argument type="service" id="fos_user.validator.initializer"/>
         </argument>
+      </call>
+      <call method="addXmlMapping">
+        <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle\DependencyInjection\Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
@@ -1477,7 +1564,7 @@
       <deprecated>The "%service_id%" service is deprecated since Symfony 3.4 and will be removed in 4.0. Use a Psr6 cache like "validator.mapping.cache.symfony" instead.</deprecated>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory" public="false">
-      <argument type="service" id="service_locator.bdkca1v"/>
+      <argument type="service" id="service_locator.8vuqatr"/>
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
@@ -1539,11 +1626,14 @@
         <argument key="resource_files" type="collection">
           <argument key="af" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.af.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.af.yml</argument>
           </argument>
           <argument key="ar" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ar.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ar.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ar.yml</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.az.xlf</argument>
@@ -1559,16 +1649,22 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.bg.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.bg.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.bg.yml</argument>
           </argument>
           <argument key="ca" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ca.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ca.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ca.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ca.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ca.yml</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.cs.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.cs.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.cs.yml</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cy.xlf</argument>
@@ -1577,69 +1673,95 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.da.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.da.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.da.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.da.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.da.yml</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.de.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.de.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.de.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.de.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.de.yml</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.el.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.el.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.el.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.el.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.el.yml</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.en.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.en.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.en.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.en.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.en.yml</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.es.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.es.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.es.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.es.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.es.yml</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.et.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.et.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.et.yml</argument>
           </argument>
           <argument key="eu" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.eu.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.eu.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.eu.yml</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.fa.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fa.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fa.yml</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fi.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fi.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fi.yml</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.fr.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fr.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fr.yml</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.gl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.gl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.gl.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.gl.yml</argument>
           </argument>
           <argument key="he" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.he.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.he.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.he.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.he.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.he.yml</argument>
           </argument>
           <argument key="hr" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.hr.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.hr.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.hr.yml</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.hu.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.hu.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.hu.yml</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hy.xlf</argument>
@@ -1649,31 +1771,42 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.id.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.id.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.id.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.id.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.id.yml</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.it.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.it.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.it.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.it.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.it.yml</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ja.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ja.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ja.yml</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lb.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lb.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lb.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lb.yml</argument>
           </argument>
           <argument key="lt" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lt.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lt.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.lt.yml</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lv.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lv.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lv.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lv.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.lv.yml</argument>
           </argument>
           <argument key="mn" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.mn.xlf</argument>
@@ -1683,11 +1816,15 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nb.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.nb.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.nb.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.nb.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.nb.yml</argument>
           </argument>
           <argument key="nl" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.nl.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.nl.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.nl.yml</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nn.xlf</argument>
@@ -1703,35 +1840,49 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pl.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pl.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pl.yml</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pt.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pt.yml</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pt_BR.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pt_BR.yml</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ro.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ro.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ro.yml</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ru.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ru.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ru.yml</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sk.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sk.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sk.yml</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sl.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sl.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sl.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sl.yml</argument>
           </argument>
           <argument key="sq" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sq.xlf</argument>
@@ -1745,15 +1896,21 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Latn.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Latn.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sr_Latn.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sr_Latn.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sr_Latn.yml</argument>
           </argument>
           <argument key="sv" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sv.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sv.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sv.yml</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.th.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.th.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.th.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.th.yml</argument>
           </argument>
           <argument key="tl" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.tl.xlf</argument>
@@ -1764,27 +1921,51 @@
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.tr.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.tr.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.tr.yml</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.uk.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.uk.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.uk.yml</argument>
           </argument>
           <argument key="vi" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.vi.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.vi.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.vi.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.vi.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.vi.yml</argument>
           </argument>
           <argument key="zh_CN" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.zh_CN.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.zh_CN.yml</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_TW.xlf</argument>
           </argument>
           <argument key="pt_PT" type="collection">
             <argument>C:\wamp64\www\huntkingdom\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pt_PT.xlf</argument>
+          </argument>
+          <argument key="bn" type="collection">
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.bn.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.bn.yml</argument>
+          </argument>
+          <argument key="bn_BD" type="collection">
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.bn_BD.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.bn_BD.yml</argument>
+          </argument>
+          <argument key="eo" type="collection">
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.eo.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.eo.yml</argument>
+          </argument>
+          <argument key="ky" type="collection">
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ky.yml</argument>
+            <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ky.yml</argument>
           </argument>
         </argument>
       </argument>
@@ -2093,6 +2274,9 @@
       </call>
       <call method="add">
         <argument type="service" id="data_collector.translation"/>
+      </call>
+      <call method="add">
+        <argument type="service" id="data_collector.security"/>
       </call>
       <call method="add">
         <argument type="service" id="data_collector.twig"/>
@@ -2483,6 +2667,30 @@
         <argument>-64</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.response</argument>
+        <argument type="collection">
+          <argument type="service" id="security.rememberme.response_listener"/>
+          <argument>onKernelResponse</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.security.firewall"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>8</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.finish_request</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.security.firewall"/>
+          <argument>onKernelFinishRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
           <argument type="service" id="twig.exception_listener"/>
@@ -2589,8 +2797,136 @@
       <call method="addListener">
         <argument>kernel.controller_arguments</argument>
         <argument type="collection">
+          <argument type="service" id="sensio_framework_extra.security.listener"/>
+          <argument>onKernelControllerArguments</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.controller_arguments</argument>
+        <argument type="collection">
           <argument type="service" id="framework_extra_bundle.event.is_granted"/>
           <argument>onKernelControllerArguments</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.security.implicit_login</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.security.interactive_login_listener"/>
+          <argument>onImplicitLogin</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>security.interactive_login</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.security.interactive_login_listener"/>
+          <argument>onSecurityInteractiveLogin</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.registration.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.authentication"/>
+          <argument>authenticate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.registration.confirmed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.authentication"/>
+          <argument>authenticate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.resetting.reset.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.authentication"/>
+          <argument>authenticate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.change_password.edit.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.group.create.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.group.delete.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.group.edit.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.profile.edit.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.registration.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.resetting.reset.completed</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.flash"/>
+          <argument>addSuccessFlash</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.resetting.reset.initialize</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.resetting"/>
+          <argument>onResettingResetInitialize</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.resetting.reset.success</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.resetting"/>
+          <argument>onResettingResetSuccess</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>fos_user.resetting.reset.request</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.resetting"/>
+          <argument>onResettingResetRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -2791,6 +3127,734 @@
       <argument>false</argument>
       <argument type="service" id="cache.property_access" on-invalid="ignore"/>
     </service>
+    <service id="1_ServiceLocator~rmdbwwb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="security.authorization_checker" type="service" id="security.authorization_checker"/>
+        <argument key="security.token_storage" type="service" id="security.token_storage"/>
+      </argument>
+    </service>
+    <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker" public="true">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="debug.security.access.decision_manager"/>
+      <argument>false</argument>
+    </service>
+    <service id="security.token_storage" class="Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage" public="true">
+      <tag name="kernel.reset" method="setToken"/>
+    </service>
+    <service id="security.helper" class="Symfony\Component\Security\Core\Security" public="false">
+      <argument type="service" id="1_ServiceLocator~rmdbwwb"/>
+    </service>
+    <service id="security.user_value_resolver" class="Symfony\Bundle\SecurityBundle\SecurityUserValueResolver" public="false">
+      <tag name="controller.argument_value_resolver" priority="40"/>
+      <argument type="service" id="security.token_storage"/>
+    </service>
+    <service id="security.authentication.manager" class="Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager" public="false">
+      <argument type="iterator">
+        <argument type="service" id="security.authentication.provider.dao.login"/>
+        <argument type="service" id="security.authentication.provider.anonymous.login"/>
+        <argument type="service" id="security.authentication.provider.anonymous.main"/>
+      </argument>
+      <argument>true</argument>
+      <call method="setEventDispatcher">
+        <argument type="service" id="debug.event_dispatcher"/>
+      </call>
+    </service>
+    <service id="security.authentication.trust_resolver" class="Symfony\Component\Security\Core\Authentication\AuthenticationTrustResolver" public="false">
+      <argument>Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</argument>
+      <argument>Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</argument>
+    </service>
+    <service id="security.authentication.session_strategy" class="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy" public="false">
+      <argument>migrate</argument>
+    </service>
+    <service id="security.authentication.session_strategy_noop" class="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy" public="false">
+      <argument>none</argument>
+    </service>
+    <service id="security.encoder_factory.generic" class="Symfony\Component\Security\Core\Encoder\EncoderFactory" public="false">
+      <argument type="collection">
+        <argument key="FOS\UserBundle\Model\UserInterface" type="collection">
+          <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
+          <argument key="arguments" type="collection">
+            <argument>13</argument>
+          </argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="security.user_password_encoder.generic" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder" public="false">
+      <argument type="service" id="security.encoder_factory.generic"/>
+    </service>
+    <service id="security.user_checker" class="Symfony\Component\Security\Core\User\UserChecker" public="false"/>
+    <service id="security.expression_language" class="Symfony\Component\Security\Core\Authorization\ExpressionLanguage" public="false"/>
+    <service id="security.authentication_utils" class="Symfony\Component\Security\Http\Authentication\AuthenticationUtils" public="true">
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy" public="false">
+      <argument type="collection"/>
+    </service>
+    <service id="security.access.simple_role_voter" class="Symfony\Component\Security\Core\Authorization\Voter\RoleVoter" public="false">
+      <tag name="security.voter" priority="245"/>
+    </service>
+    <service id="security.access.authenticated_voter" class="Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter" public="false">
+      <tag name="security.voter" priority="250"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+    </service>
+    <service id="security.access.expression_voter" class="Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter" public="false">
+      <tag name="security.voter" priority="245"/>
+      <argument type="service" id="security.expression_language"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
+    </service>
+    <service id="security.firewall.map" class="Symfony\Bundle\SecurityBundle\Security\FirewallMap" public="false">
+      <argument type="service" id="service_locator.212ruck"/>
+      <argument type="iterator">
+        <argument key="security.firewall.map.context.dev" type="service" id="security.request_matcher.zfhj2lw"/>
+        <argument key="security.firewall.map.context.api_doc" type="service" id="security.request_matcher.b.bekep"/>
+        <argument key="security.firewall.map.context.login" type="service" id="security.request_matcher.yg2ff4m"/>
+        <argument key="security.firewall.map.context.main">null</argument>
+      </argument>
+    </service>
+    <service id="security.firewall.context" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext" abstract="true">
+      <argument type="collection"/>
+      <argument type="service" id="security.exception_listener"/>
+      <argument></argument>
+      <argument></argument>
+    </service>
+    <service id="security.firewall.config" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument>false</argument>
+      <argument>false</argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.logout_url_generator" class="Symfony\Component\Security\Http\Logout\LogoutUrlGenerator" public="false">
+      <argument type="service" id="request_stack" on-invalid="null"/>
+      <argument type="service" id="router.default" on-invalid="null"/>
+      <argument type="service" id="security.token_storage" on-invalid="null"/>
+    </service>
+    <service id="security.user.provider.in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false" abstract="true"/>
+    <service id="security.user.provider.in_memory.user" class="Symfony\Component\Security\Core\User\User" public="false" abstract="true"/>
+    <service id="security.user.provider.ldap" class="Symfony\Component\Security\Core\User\LdapUserProvider" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+    </service>
+    <service id="security.user.provider.chain" class="Symfony\Component\Security\Core\User\ChainUserProvider" public="false" abstract="true"/>
+    <service id="security.http_utils" class="Symfony\Component\Security\Http\HttpUtils" public="false">
+      <argument type="service" id="router.default" on-invalid="null"/>
+      <argument type="service" id="router.default" on-invalid="null"/>
+      <argument>{^https?://%%s$}i</argument>
+    </service>
+    <service id="security.validator.user_password" class="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator">
+      <tag name="validator.constraint_validator" alias="security.validator.user_password"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.encoder_factory.generic"/>
+    </service>
+    <service id="security.authentication.listener.anonymous" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="security.authentication.manager"/>
+    </service>
+    <service id="security.authentication.provider.anonymous" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
+      <argument></argument>
+    </service>
+    <service id="security.authentication.retry_entry_point" class="Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint" public="false">
+      <argument>80</argument>
+      <argument>443</argument>
+    </service>
+    <service id="security.authentication.basic_entry_point" class="Symfony\Component\Security\Http\EntryPoint\BasicAuthenticationEntryPoint" public="false"/>
+    <service id="security.authentication.digest_entry_point" class="Symfony\Component\Security\Http\EntryPoint\DigestAuthenticationEntryPoint" public="false"/>
+    <service id="security.channel_listener" class="Symfony\Component\Security\Http\Firewall\ChannelListener" public="false">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.access_map"/>
+      <argument type="service" id="security.authentication.retry_entry_point"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
+      <call method="add">
+        <argument type="service" id="security.request_matcher.uyd5twn"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.ycpk1ip"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_FULLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="iterator">
+        <argument type="service" id="fos_user.user_provider.username"/>
+      </argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+    </service>
+    <service id="security.logout_listener" class="Symfony\Component\Security\Http\Firewall\LogoutListener" public="false" abstract="true">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="service" id="security.logout.success_handler"/>
+      <argument></argument>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.csrf_token_clearing"/>
+      </call>
+    </service>
+    <service id="security.logout.handler.session" class="Symfony\Component\Security\Http\Logout\SessionLogoutHandler" public="false"/>
+    <service id="security.logout.handler.cookie_clearing" class="Symfony\Component\Security\Http\Logout\CookieClearingLogoutHandler" public="false" abstract="true"/>
+    <service id="security.logout.success_handler" class="Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler" public="false" abstract="true">
+      <argument type="service" id="security.http_utils"/>
+      <argument>/</argument>
+    </service>
+    <service id="security.authentication.form_entry_point" class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false" abstract="true">
+      <argument type="service" id="http_kernel"/>
+    </service>
+    <service id="security.authentication.listener.abstract" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument></argument>
+      <argument type="service" id="security.authentication.success_handler"/>
+      <argument type="service" id="security.authentication.failure_handler"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.custom_success_handler" class="Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler" public="false" abstract="true">
+      <argument></argument>
+      <argument type="collection"/>
+      <argument></argument>
+    </service>
+    <service id="security.authentication.success_handler" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false" abstract="true">
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+    </service>
+    <service id="security.authentication.custom_failure_handler" class="Symfony\Component\Security\Http\Authentication\CustomAuthenticationFailureHandler" public="false" abstract="true">
+      <argument></argument>
+      <argument type="collection"/>
+    </service>
+    <service id="security.authentication.failure_handler" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.form" class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false" abstract="true">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument></argument>
+      <argument type="service" id="security.authentication.success_handler"/>
+      <argument type="service" id="security.authentication.failure_handler"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.simple_form" class="Symfony\Component\Security\Http\Firewall\SimpleFormAuthenticationListener" public="false" abstract="true">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument></argument>
+      <argument type="service" id="security.authentication.success_handler"/>
+      <argument type="service" id="security.authentication.failure_handler"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.simple_success_failure_handler" class="Symfony\Component\Security\Http\Authentication\SimpleAuthenticationHandler" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument></argument>
+      <argument type="service" id="security.authentication.success_handler"/>
+      <argument type="service" id="security.authentication.failure_handler"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.simple_preauth" class="Symfony\Component\Security\Http\Firewall\SimplePreAuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.x509" class="Symfony\Component\Security\Http\Firewall\X509AuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.json" class="Symfony\Component\Security\Http\Firewall\UsernamePasswordJsonAuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument type="service" id="property_accessor" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.remote_user" class="Symfony\Component\Security\Http\Firewall\RemoteUserAuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.basic" class="Symfony\Component\Security\Http\Firewall\BasicAuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.digest" class="Symfony\Component\Security\Http\Firewall\DigestAuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.provider.dao" class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="security.encoder_factory.generic"/>
+      <argument>true</argument>
+    </service>
+    <service id="security.authentication.provider.ldap_bind" class="Symfony\Component\Security\Core\Authentication\Provider\LdapBindAuthenticationProvider" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument>true</argument>
+    </service>
+    <service id="security.authentication.provider.simple" class="Symfony\Component\Security\Core\Authentication\Provider\SimpleAuthenticationProvider" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument>null</argument>
+    </service>
+    <service id="security.authentication.provider.pre_authenticated" class="Symfony\Component\Security\Core\Authentication\Provider\PreAuthenticatedAuthenticationProvider" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+    </service>
+    <service id="security.exception_listener" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument></argument>
+      <argument type="service" id="security.authentication.entry_point" on-invalid="null"/>
+      <argument>null</argument>
+      <argument type="service" id="security.access.denied_handler" on-invalid="null"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument>false</argument>
+    </service>
+    <service id="security.authentication.switchuser_listener" class="Symfony\Component\Security\Http\Firewall\SwitchUserListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="debug.security.access.decision_manager"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument>_switch_user</argument>
+      <argument>ROLE_ALLOWED_TO_SWITCH</argument>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument>false</argument>
+    </service>
+    <service id="security.access_listener" class="Symfony\Component\Security\Http\Firewall\AccessListener" public="false">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="debug.security.access.decision_manager"/>
+      <argument type="service" id="security.access_map"/>
+      <argument type="service" id="security.authentication.manager"/>
+    </service>
+    <service id="security.authentication.listener.rememberme" class="Symfony\Component\Security\Http\Firewall\RememberMeListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.rememberme"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument></argument>
+      <argument type="service" id="security.authentication.session_strategy"/>
+    </service>
+    <service id="security.authentication.provider.rememberme" class="Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider" public="false" abstract="true">
+      <argument></argument>
+    </service>
+    <service id="security.rememberme.token.provider.in_memory" class="Symfony\Component\Security\Core\Authentication\RememberMe\InMemoryTokenProvider" public="false"/>
+    <service id="security.authentication.rememberme.services.abstract" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="collection"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.rememberme.services.persistent" class="Symfony\Component\Security\Http\RememberMe\PersistentTokenBasedRememberMeServices" public="false" abstract="true">
+      <argument type="collection"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.rememberme.services.simplehash" class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false" abstract="true">
+      <argument type="collection"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.rememberme.response_listener" class="Symfony\Component\Security\Http\RememberMe\ResponseListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+    </service>
+    <service id="templating.helper.logout_url" class="Symfony\Bundle\SecurityBundle\Templating\Helper\LogoutUrlHelper">
+      <tag name="templating.helper" alias="logout_url"/>
+      <argument type="service" id="security.logout_url_generator"/>
+    </service>
+    <service id="templating.helper.security" class="Symfony\Bundle\SecurityBundle\Templating\Helper\SecurityHelper">
+      <tag name="templating.helper" alias="security"/>
+      <argument type="service" id="security.authorization_checker" on-invalid="ignore"/>
+    </service>
+    <service id="twig.extension.logout_url" class="Symfony\Bridge\Twig\Extension\LogoutUrlExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="security.logout_url_generator"/>
+    </service>
+    <service id="twig.extension.security" class="Symfony\Bridge\Twig\Extension\SecurityExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="security.authorization_checker" on-invalid="ignore"/>
+    </service>
+    <service id="data_collector.security" class="Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector" public="false">
+      <tag name="data_collector" template="@Security/Collector/security.html.twig" id="security" priority="270"/>
+      <argument type="service" id="security.token_storage" on-invalid="ignore"/>
+      <argument type="service" id="security.role_hierarchy"/>
+      <argument type="service" id="security.logout_url_generator"/>
+      <argument type="service" id="debug.security.access.decision_manager"/>
+      <argument type="service" id="security.firewall.map"/>
+      <argument type="service" id="debug.security.firewall" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.guard_handler" class="Symfony\Component\Security\Guard\GuardAuthenticatorHandler">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument type="collection">
+        <argument>login</argument>
+      </argument>
+      <call method="setSessionAuthenticationStrategy">
+        <argument type="service" id="security.authentication.session_strategy"/>
+      </call>
+    </service>
+    <service id="security.authentication.provider.guard" class="Symfony\Component\Security\Guard\Provider\GuardAuthenticationProvider" public="false" abstract="true">
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+    </service>
+    <service id="security.authentication.listener.guard" class="Symfony\Component\Security\Guard\Firewall\GuardAuthenticationListener" public="false" abstract="true">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="security.authentication.guard_handler"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument></argument>
+      <argument></argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="debug.security.access.decision_manager" class="Symfony\Component\Security\Core\Authorization\TraceableAccessDecisionManager" public="false">
+      <argument type="service" id="debug.security.access.decision_manager.inner"/>
+    </service>
+    <service id="debug.security.firewall" class="Symfony\Bundle\SecurityBundle\Debug\TraceableFirewallListener" public="false">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="security.firewall.map"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="security.logout_url_generator"/>
+    </service>
+    <service id="security.firewall.map.config.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
+      <argument>dev</argument>
+      <argument>security.user_checker</argument>
+      <argument>security.request_matcher.zfhj2lw</argument>
+      <argument>false</argument>
+      <argument>false</argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.request_matcher.zfhj2lw" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/(_(profiler|wdt)|css|images|js)/</argument>
+    </service>
+    <service id="security.firewall.map.context.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="iterator"/>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="service" id="security.firewall.map.config.dev"/>
+    </service>
+    <service id="security.firewall.map.config.api_doc" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
+      <argument>api_doc</argument>
+      <argument>security.user_checker</argument>
+      <argument>security.request_matcher.b.bekep</argument>
+      <argument>false</argument>
+      <argument>false</argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.request_matcher.b.bekep" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/doc</argument>
+    </service>
+    <service id="security.firewall.map.context.api_doc" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="iterator"/>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="service" id="security.firewall.map.config.api_doc"/>
+    </service>
+    <service id="security.firewall.map.config.login" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
+      <argument>login</argument>
+      <argument>security.user_checker</argument>
+      <argument>security.request_matcher.yg2ff4m</argument>
+      <argument>true</argument>
+      <argument>true</argument>
+      <argument>fos_user.user_provider.username</argument>
+      <argument>null</argument>
+      <argument>security.authentication.form_entry_point.login</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument>form_login</argument>
+        <argument>anonymous</argument>
+      </argument>
+      <argument>null</argument>
+    </service>
+    <service id="security.request_matcher.yg2ff4m" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/login</argument>
+    </service>
+    <service id="security.authentication.provider.dao.login" class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
+      <argument type="service" id="fos_user.user_provider.username"/>
+      <argument type="service" id="security.user_checker"/>
+      <argument>login</argument>
+      <argument type="service" id="security.encoder_factory.generic"/>
+      <argument>true</argument>
+    </service>
+    <service id="security.authentication.success_handler.login.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="always_use_default_target_path">false</argument>
+          <argument key="default_target_path">/</argument>
+          <argument key="login_path">/login</argument>
+          <argument key="target_path_parameter">_target_path</argument>
+          <argument key="use_referer">false</argument>
+        </argument>
+      </call>
+      <call method="setProviderKey">
+        <argument>login</argument>
+      </call>
+    </service>
+    <service id="security.authentication.failure_handler.login.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler" public="false">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">/login</argument>
+          <argument key="failure_path">null</argument>
+          <argument key="failure_forward">false</argument>
+          <argument key="failure_path_parameter">_failure_path</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="security.authentication.listener.form.login" class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
+      <tag name="security.remember_me_aware" id="login" provider="fos_user.user_provider.username"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>login</argument>
+      <argument type="service" id="security.authentication.success_handler.login.form_login"/>
+      <argument type="service" id="security.authentication.failure_handler.login.form_login"/>
+      <argument type="collection">
+        <argument key="check_path">/api/login_check</argument>
+        <argument key="username_parameter">username</argument>
+        <argument key="password_parameter">password</argument>
+        <argument key="require_previous_session">false</argument>
+        <argument key="use_forward">false</argument>
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">authenticate</argument>
+        <argument key="post_only">true</argument>
+      </argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.authentication.form_entry_point.login" class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>/login</argument>
+      <argument>false</argument>
+    </service>
+    <service id="security.authentication.listener.anonymous.login" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument>%container.build_hash%</argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="security.authentication.manager"/>
+    </service>
+    <service id="security.authentication.provider.anonymous.login" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
+      <argument>%container.build_hash%</argument>
+    </service>
+    <service id="security.exception_listener.login" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>login</argument>
+      <argument type="service" id="security.authentication.form_entry_point.login"/>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument>true</argument>
+    </service>
+    <service id="security.firewall.map.context.login" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="iterator">
+        <argument type="service" id="security.channel_listener"/>
+        <argument type="service" id="security.authentication.listener.form.login"/>
+        <argument type="service" id="security.authentication.listener.anonymous.login"/>
+        <argument type="service" id="security.access_listener"/>
+      </argument>
+      <argument type="service" id="security.exception_listener.login"/>
+      <argument>null</argument>
+      <argument type="service" id="security.firewall.map.config.login"/>
+    </service>
+    <service id="security.firewall.map.config.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
+      <argument>main</argument>
+      <argument>security.user_checker</argument>
+      <argument>null</argument>
+      <argument>true</argument>
+      <argument>false</argument>
+      <argument>fos_user.user_provider.username</argument>
+      <argument>main</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument>anonymous</argument>
+      </argument>
+      <argument>null</argument>
+    </service>
+    <service id="security.context_listener.0" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="iterator">
+        <argument type="service" id="fos_user.user_provider.username"/>
+      </argument>
+      <argument>main</argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <call method="setLogoutOnUserChange">
+        <argument>false</argument>
+      </call>
+    </service>
+    <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument>%container.build_hash%</argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="security.authentication.manager"/>
+    </service>
+    <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
+      <argument>%container.build_hash%</argument>
+    </service>
+    <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>main</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument>false</argument>
+    </service>
+    <service id="security.firewall.map.context.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="iterator">
+        <argument type="service" id="security.channel_listener"/>
+        <argument type="service" id="security.context_listener.0"/>
+        <argument type="service" id="security.authentication.listener.anonymous.main"/>
+        <argument type="service" id="security.access_listener"/>
+      </argument>
+      <argument type="service" id="security.exception_listener.main"/>
+      <argument>null</argument>
+      <argument type="service" id="security.firewall.map.config.main"/>
+    </service>
+    <service id="service_locator.212ruck" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="security.firewall.map.context.api_doc" type="service" id="security.firewall.map.context.api_doc"/>
+        <argument key="security.firewall.map.context.dev" type="service" id="security.firewall.map.context.dev"/>
+        <argument key="security.firewall.map.context.login" type="service" id="security.firewall.map.context.login"/>
+        <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
+      </argument>
+    </service>
+    <service id="security.request_matcher.uyd5twn" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/login</argument>
+    </service>
+    <service id="security.request_matcher.ycpk1ip" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api</argument>
+    </service>
+    <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
+      <tag name="console.command" command="security:encode-password"/>
+      <argument type="service" id="security.encoder_factory.generic"/>
+      <argument type="collection">
+        <argument>FOS\UserBundle\Model\UserInterface</argument>
+      </argument>
+      <call method="setName">
+        <argument>security:encode-password</argument>
+      </call>
+    </service>
     <service id="twig" class="Twig\Environment" public="true">
       <argument type="service" id="twig.loader.filesystem"/>
       <argument type="collection">
@@ -2800,6 +3864,12 @@
         <argument key="cache">C:\wamp64\www\huntkingdom\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
       </argument>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.logout_url"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.security"/>
+      </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.profiler"/>
       </call>
@@ -2863,6 +3933,9 @@
       </call>
       <call method="setDebug">
         <argument>true</argument>
+      </call>
+      <call method="setTokenStorage">
+        <argument type="service" id="security.token_storage" on-invalid="ignore"/>
       </call>
       <call method="setRequestStack">
         <argument type="service" id="request_stack" on-invalid="ignore"/>
@@ -2941,6 +4014,14 @@
       <call method="addPath">
         <argument>C:\wamp64\www\huntkingdom\src\ForumBundle/Resources/views</argument>
         <argument>!Forum</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>!FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp64\www\huntkingdom\vendor\nelmio\api-doc-bundle\Nelmio\ApiDocBundle/Resources/views</argument>
@@ -3144,6 +4225,14 @@
       <call method="addPath">
         <argument>C:\wamp64\www\huntkingdom\src\ForumBundle/Resources/views</argument>
         <argument>!Forum</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>!FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp64\www\huntkingdom\vendor\nelmio\api-doc-bundle\Nelmio\ApiDocBundle/Resources/views</argument>
@@ -3494,6 +4583,9 @@
     </service>
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
       <argument type="service" id="service_container"/>
+      <call method="addEventSubscriber">
+        <argument type="service" id="fos_user.user_listener"/>
+      </call>
       <call method="addEventListener">
         <argument type="collection">
           <argument>loadClassMetadata</argument>
@@ -3738,6 +4830,21 @@
         <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
         <argument>EventBundle\Entity</argument>
       </call>
+      <call method="addDriver">
+        <argument type="service">
+          <service class="Doctrine\ORM\Mapping\Driver\XmlDriver">
+            <argument type="service">
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
+                <argument type="collection">
+                  <argument key="C:\wamp64\www\huntkingdom\vendor\friendsofsymfony\user-bundle\Resources\config\doctrine-mapping">FOS\UserBundle\Model</argument>
+                </argument>
+                <argument>.orm.xml</argument>
+              </service>
+            </argument>
+          </service>
+        </argument>
+        <argument>FOS\UserBundle\Model</argument>
+      </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">
       <call method="setNamespace">
@@ -3824,12 +4931,23 @@
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
     </service>
+    <service id="sensio_framework_extra.security.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\SecurityListener" public="false">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="framework_extra_bundle.argument_name_convertor"/>
+      <argument type="service" id="sensio_framework_extra.security.expression_language.default" on-invalid="null"/>
+      <argument type="service" id="security.authentication.trust_resolver" on-invalid="null"/>
+      <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
+      <argument type="service" id="security.token_storage" on-invalid="null"/>
+      <argument type="service" id="security.authorization_checker" on-invalid="null"/>
+      <argument type="service" id="monolog.logger" on-invalid="null"/>
+    </service>
     <service id="sensio_framework_extra.security.expression_language.default" class="Sensio\Bundle\FrameworkExtraBundle\Security\ExpressionLanguage" public="false"/>
     <service id="framework_extra_bundle.event.is_granted" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\IsGrantedListener" public="false">
       <tag name="kernel.event_subscriber"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="framework_extra_bundle.argument_name_convertor"/>
-      <argument>null</argument>
+      <argument type="service" id="security.authorization_checker" on-invalid="null"/>
     </service>
     <service id="framework_extra_bundle.argument_name_convertor" class="Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter" public="false">
       <argument type="service" id="argument_metadata_factory"/>
@@ -4413,6 +5531,233 @@
     </service>
     <service id="jms_serializer.configured_serialization_context_factory" class="JMS\SerializerBundle\ContextFactory\ConfiguredContextFactory" public="false"/>
     <service id="jms_serializer.configured_deserialization_context_factory" class="JMS\SerializerBundle\ContextFactory\ConfiguredContextFactory" public="false"/>
+    <service id="fos_user.user_manager.default" class="FOS\UserBundle\Doctrine\UserManager" public="false">
+      <argument type="service" id="fos_user.util.password_updater"/>
+      <argument type="service" id="fos_user.util.canonical_fields_updater"/>
+      <argument type="service" id="fos_user.object_manager"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.object_manager" class="Doctrine\Common\Persistence\ObjectManager" public="false">
+      <argument>null</argument>
+      <factory service="doctrine" method="getManager"/>
+    </service>
+    <service id="fos_user.user_listener" class="FOS\UserBundle\Doctrine\UserListener" public="false">
+      <tag name="doctrine.event_subscriber"/>
+      <argument type="service" id="fos_user.util.password_updater"/>
+      <argument type="service" id="fos_user.util.canonical_fields_updater"/>
+    </service>
+    <service id="fos_user.validator.initializer" class="FOS\UserBundle\Validator\Initializer" public="false">
+      <tag name="validator.initializer"/>
+      <argument type="service" id="fos_user.util.canonical_fields_updater"/>
+    </service>
+    <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="fos_user.user_manager.default"/>
+    </service>
+    <service id="fos_user.security.login_manager" class="FOS\UserBundle\Security\LoginManager">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.user_checker"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="request_stack"/>
+      <argument>null</argument>
+    </service>
+    <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
+      <argument type="service" id="fos_user.user_manager.default"/>
+    </service>
+    <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
+      <argument type="service" id="fos_user.user_manager.default"/>
+    </service>
+    <service id="fos_user.security.controller" class="FOS\UserBundle\Controller\SecurityController" public="true">
+      <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="fos_user.util.canonicalizer.default" class="FOS\UserBundle\Util\Canonicalizer" public="false"/>
+    <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
+      <argument type="service" id="fos_user.user_manager.default"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="fos_user.util.token_generator.default" class="FOS\UserBundle\Util\TokenGenerator" public="false"/>
+    <service id="fos_user.util.password_updater" class="FOS\UserBundle\Util\PasswordUpdater" public="false">
+      <argument type="service" id="security.encoder_factory.generic"/>
+    </service>
+    <service id="fos_user.util.canonical_fields_updater" class="FOS\UserBundle\Util\CanonicalFieldsUpdater" public="false">
+      <argument type="service" id="fos_user.util.canonicalizer.default"/>
+      <argument type="service" id="fos_user.util.canonicalizer.default"/>
+    </service>
+    <service id="fos_user.mailer.default" class="FOS\UserBundle\Mailer\Mailer" public="false">
+      <tag name="fos_user.requires_swift"/>
+      <argument type="service" id="swiftmailer.mailer.default"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="templating.engine.twig"/>
+      <argument type="collection">
+        <argument key="confirmation.template">@FOSUser/Registration/email.txt.twig</argument>
+        <argument key="resetting.template">@FOSUser/Resetting/email.txt.twig</argument>
+        <argument key="from_email" type="collection">
+          <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
+          <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_user.mailer.twig_swift" class="FOS\UserBundle\Mailer\TwigSwiftMailer" public="false">
+      <tag name="fos_user.requires_swift"/>
+      <argument type="service" id="swiftmailer.mailer.default"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="twig"/>
+      <argument type="collection">
+        <argument key="template" type="collection">
+          <argument key="confirmation">@FOSUser/Registration/email.txt.twig</argument>
+          <argument key="resetting">@FOSUser/Resetting/email.txt.twig</argument>
+        </argument>
+        <argument key="from_email" type="collection">
+          <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
+          <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_user.mailer.noop" class="FOS\UserBundle\Mailer\NoopMailer" public="false"/>
+    <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="fos_user.security.login_manager"/>
+      <argument>main</argument>
+    </service>
+    <service id="fos_user.command.activate_user" class="FOS\UserBundle\Command\ActivateUserCommand">
+      <tag name="console.command" command="fos:user:activate"/>
+      <argument type="service" id="fos_user.util.user_manipulator"/>
+      <call method="setName">
+        <argument>fos:user:activate</argument>
+      </call>
+    </service>
+    <service id="fos_user.command.change_password" class="FOS\UserBundle\Command\ChangePasswordCommand">
+      <tag name="console.command" command="fos:user:change-password"/>
+      <argument type="service" id="fos_user.util.user_manipulator"/>
+      <call method="setName">
+        <argument>fos:user:change-password</argument>
+      </call>
+    </service>
+    <service id="fos_user.command.create_user" class="FOS\UserBundle\Command\CreateUserCommand">
+      <tag name="console.command" command="fos:user:create"/>
+      <argument type="service" id="fos_user.util.user_manipulator"/>
+      <call method="setName">
+        <argument>fos:user:create</argument>
+      </call>
+    </service>
+    <service id="fos_user.command.deactivate_user" class="FOS\UserBundle\Command\DeactivateUserCommand">
+      <tag name="console.command" command="fos:user:deactivate"/>
+      <argument type="service" id="fos_user.util.user_manipulator"/>
+      <call method="setName">
+        <argument>fos:user:deactivate</argument>
+      </call>
+    </service>
+    <service id="fos_user.command.demote_user" class="FOS\UserBundle\Command\DemoteUserCommand">
+      <tag name="console.command" command="fos:user:demote"/>
+      <argument type="service" id="fos_user.util.user_manipulator"/>
+      <call method="setName">
+        <argument>fos:user:demote</argument>
+      </call>
+    </service>
+    <service id="fos_user.command.promote_user" class="FOS\UserBundle\Command\PromoteUserCommand">
+      <tag name="console.command" command="fos:user:promote"/>
+      <argument type="service" id="fos_user.util.user_manipulator"/>
+      <call method="setName">
+        <argument>fos:user:promote</argument>
+      </call>
+    </service>
+    <service id="fos_user.listener.flash" class="FOS\UserBundle\EventListener\FlashListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="session"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="fos_user.username_form_type" class="FOS\UserBundle\Form\Type\UsernameFormType">
+      <tag name="form.type" alias="fos_user_username"/>
+      <argument type="service" id="fos_user.user_to_username_transformer"/>
+    </service>
+    <service id="fos_user.user_to_username_transformer" class="FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer" public="false">
+      <argument type="service" id="fos_user.user_manager.default"/>
+    </service>
+    <service id="fos_user.profile.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_profile_form</argument>
+      <argument>FOS\UserBundle\Form\Type\ProfileFormType</argument>
+      <argument>%fos_user.profile.form.validation_groups%</argument>
+    </service>
+    <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
+      <tag name="form.type" alias="fos_user_profile"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.profile.controller" class="FOS\UserBundle\Controller\ProfileController" public="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="fos_user.profile.form.factory"/>
+      <argument type="service" id="fos_user.user_manager.default"/>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_registration_form</argument>
+      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
+      <argument>%fos_user.registration.form.validation_groups%</argument>
+    </service>
+    <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
+      <tag name="form.type" alias="fos_user_registration"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.registration.controller" class="FOS\UserBundle\Controller\RegistrationController" public="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="fos_user.registration.form.factory"/>
+      <argument type="service" id="fos_user.user_manager.default"/>
+      <argument type="service" id="security.token_storage"/>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="fos_user.change_password.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_change_password_form</argument>
+      <argument>FOS\UserBundle\Form\Type\ChangePasswordFormType</argument>
+      <argument>%fos_user.change_password.form.validation_groups%</argument>
+    </service>
+    <service id="fos_user.change_password.form.type" class="FOS\UserBundle\Form\Type\ChangePasswordFormType">
+      <tag name="form.type" alias="fos_user_change_password"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.change_password.controller" class="FOS\UserBundle\Controller\ChangePasswordController" public="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="fos_user.change_password.form.factory"/>
+      <argument type="service" id="fos_user.user_manager.default"/>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_resetting_form</argument>
+      <argument>FOS\UserBundle\Form\Type\ResettingFormType</argument>
+      <argument>%fos_user.resetting.form.validation_groups%</argument>
+    </service>
+    <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
+      <tag name="form.type" alias="fos_user_resetting"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.listener.resetting" class="FOS\UserBundle\EventListener\ResettingListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="router.default"/>
+      <argument>86400</argument>
+    </service>
+    <service id="fos_user.resetting.controller" class="FOS\UserBundle\Controller\ResettingController" public="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="fos_user.resetting.form.factory"/>
+      <argument type="service" id="fos_user.user_manager.default"/>
+      <argument type="service" id="fos_user.util.token_generator.default"/>
+      <argument type="service" id="fos_user.mailer.default"/>
+      <argument>7200</argument>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
     <service id="nelmio_api_doc.formatter.abstract_formatter" class="Nelmio\ApiDocBundle\Formatter\AbstractFormatter" abstract="true"/>
     <service id="nelmio_api_doc.formatter.markdown_formatter" class="Nelmio\ApiDocBundle\Formatter\MarkdownFormatter"/>
     <service id="nelmio_api_doc.formatter.simple_formatter" class="Nelmio\ApiDocBundle\Formatter\SimpleFormatter"/>
@@ -4714,13 +6059,15 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.bdkca1v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.8vuqatr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service" id="doctrine.orm.validator.unique"/>
+        <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service" id="security.validator.user_password"/>
         <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service" id="validator.email"/>
         <argument key="Symfony\Component\Validator\Constraints\ExpressionValidator" type="service" id="validator.expression"/>
         <argument key="doctrine.orm.validator.unique" type="service" id="doctrine.orm.validator.unique"/>
+        <argument key="security.validator.user_password" type="service" id="security.validator.user_password"/>
         <argument key="validator.expression" type="service" id="validator.expression"/>
       </argument>
     </service>
@@ -4747,14 +6094,22 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.hnwz.wz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.2na.p6f" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType" type="service" id="fos_user.change_password.form.type"/>
+        <argument key="FOS\UserBundle\Form\Type\ProfileFormType" type="service" id="fos_user.profile.form.type"/>
+        <argument key="FOS\UserBundle\Form\Type\RegistrationFormType" type="service" id="fos_user.registration.form.type"/>
+        <argument key="FOS\UserBundle\Form\Type\ResettingFormType" type="service" id="fos_user.resetting.form.type"/>
+        <argument key="FOS\UserBundle\Form\Type\UsernameFormType" type="service" id="fos_user.username_form_type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>
       </argument>
+    </service>
+    <service id="security.logout.handler.csrf_token_clearing" class="Symfony\Component\Security\Http\Logout\CsrfTokenClearingLogoutHandler" public="false">
+      <argument type="service" id="security.csrf.token_storage"/>
     </service>
     <service id="monolog.logger.request" class="Symfony\Bridge\Monolog\Logger">
       <argument>request</argument>
@@ -4867,6 +6222,21 @@
         <argument type="service" id="monolog.handler.server_log"/>
       </call>
     </service>
+    <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
+      <argument>security</argument>
+      <call method="pushProcessor">
+        <argument type="service" id="debug.log_processor"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.server_log"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.console"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+    </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
       <call method="pushProcessor">
@@ -4956,13 +6326,24 @@
         <argument type="service" id="argument_resolver.request_attribute"/>
         <argument type="service" id="argument_resolver.request"/>
         <argument type="service" id="argument_resolver.session"/>
+        <argument type="service" id="security.user_value_resolver"/>
         <argument type="service" id="argument_resolver.service"/>
         <argument type="service" id="argument_resolver.default"/>
         <argument type="service" id="argument_resolver.variadic"/>
       </argument>
     </service>
+    <service id="debug.security.access.decision_manager.inner" class="Symfony\Component\Security\Core\Authorization\AccessDecisionManager" public="false">
+      <argument type="iterator">
+        <argument type="service" id="security.access.authenticated_voter"/>
+        <argument type="service" id="security.access.simple_role_voter"/>
+        <argument type="service" id="security.access.expression_voter"/>
+      </argument>
+      <argument>affirmative</argument>
+      <argument>false</argument>
+      <argument>true</argument>
+    </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id="service_locator.a7_69rv"/>
+      <argument type="service" id="service_locator.kkqqvng"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -4982,6 +6363,7 @@
         <argument key="lint:xliff">console.command.xliff_lint</argument>
         <argument key="lint:yaml">console.command.yaml_lint</argument>
         <argument key="debug:form">console.command.form_debug</argument>
+        <argument key="security:encode-password">security.command.user_password_encoder</argument>
         <argument key="debug:twig">twig.command.debug</argument>
         <argument key="lint:twig">twig.command.lint</argument>
         <argument key="doctrine:database:create">doctrine.database_create_command</argument>
@@ -5004,6 +6386,12 @@
         <argument key="doctrine:schema:update">doctrine.schema_update_command</argument>
         <argument key="doctrine:schema:validate">doctrine.schema_validate_command</argument>
         <argument key="doctrine:mapping:import">doctrine.mapping_import_command</argument>
+        <argument key="fos:user:activate">fos_user.command.activate_user</argument>
+        <argument key="fos:user:change-password">fos_user.command.change_password</argument>
+        <argument key="fos:user:create">fos_user.command.create_user</argument>
+        <argument key="fos:user:deactivate">fos_user.command.deactivate_user</argument>
+        <argument key="fos:user:demote">fos_user.command.demote_user</argument>
+        <argument key="fos:user:promote">fos_user.command.promote_user</argument>
         <argument key="security:check">sensio_distribution.security_checker.command</argument>
         <argument key="server:run">web_server.command.server_run</argument>
         <argument key="server:start">web_server.command.server_start</argument>
@@ -5012,7 +6400,7 @@
         <argument key="server:log">web_server.command.server_log</argument>
       </argument>
     </service>
-    <service id="service_locator.a7_69rv" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.kkqqvng" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service" id="console.command.about"/>
@@ -5053,6 +6441,13 @@
         <argument key="doctrine.schema_drop_command" type="service" id="doctrine.schema_drop_command"/>
         <argument key="doctrine.schema_update_command" type="service" id="doctrine.schema_update_command"/>
         <argument key="doctrine.schema_validate_command" type="service" id="doctrine.schema_validate_command"/>
+        <argument key="fos_user.command.activate_user" type="service" id="fos_user.command.activate_user"/>
+        <argument key="fos_user.command.change_password" type="service" id="fos_user.command.change_password"/>
+        <argument key="fos_user.command.create_user" type="service" id="fos_user.command.create_user"/>
+        <argument key="fos_user.command.deactivate_user" type="service" id="fos_user.command.deactivate_user"/>
+        <argument key="fos_user.command.demote_user" type="service" id="fos_user.command.demote_user"/>
+        <argument key="fos_user.command.promote_user" type="service" id="fos_user.command.promote_user"/>
+        <argument key="security.command.user_password_encoder" type="service" id="security.command.user_password_encoder"/>
         <argument key="sensio_distribution.security_checker.command" type="service" id="sensio_distribution.security_checker.command"/>
         <argument key="twig.command.debug" type="service" id="twig.command.debug"/>
         <argument key="twig.command.lint" type="service" id="twig.command.lint"/>
@@ -5175,6 +6570,26 @@
     <service id="annotation_reader" alias="annotations.cached_reader"/>
     <service id="Doctrine\Common\Annotations\Reader" alias="annotations.cached_reader" public="false"/>
     <service id="Symfony\Component\PropertyAccess\PropertyAccessorInterface" alias="property_accessor" public="false"/>
+    <service id="Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface" alias="security.authorization_checker" public="false"/>
+    <service id="Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface" alias="security.token_storage" public="false"/>
+    <service id="Symfony\Component\Security\Core\Security" alias="security.helper" public="false"/>
+    <service id="Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface" alias="security.authentication.manager" public="false"/>
+    <service id="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface" alias="security.authentication.session_strategy" public="false"/>
+    <service id="security.encoder_factory" alias="security.encoder_factory.generic"/>
+    <service id="Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface" alias="security.encoder_factory.generic" public="false"/>
+    <service id="security.password_encoder" alias="security.user_password_encoder.generic" public="true"/>
+    <service id="Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface" alias="security.user_password_encoder.generic" public="false"/>
+    <service id="Symfony\Component\Security\Http\Authentication\AuthenticationUtils" alias="security.authentication_utils" public="false"/>
+    <service id="Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface" alias="debug.security.access.decision_manager" public="false"/>
+    <service id="Symfony\Component\Security\Http\Firewall" alias="debug.security.firewall" public="false"/>
+    <service id="Symfony\Component\Security\Guard\GuardAuthenticatorHandler" alias="security.authentication.guard_handler" public="false"/>
+    <service id="security.firewall" alias="debug.security.firewall"/>
+    <service id="security.user.provider.concrete.fos_userbundle" alias="fos_user.user_provider.username" public="false"/>
+    <service id="security.authentication.session_strategy.login" alias="security.authentication.session_strategy_noop"/>
+    <service id="security.user_checker.login" alias="security.user_checker" public="false"/>
+    <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
+    <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
+    <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="Twig_Environment" alias="twig" public="false"/>
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
@@ -5217,16 +6632,30 @@
     <service id="JMS\Serializer\SerializerInterface" alias="jms_serializer.serializer" public="false"/>
     <service id="JMS\Serializer\ArrayTransformerInterface" alias="jms_serializer.serializer" public="false"/>
     <service id="jms_serializer.accessor_strategy" alias="jms_serializer.accessor_strategy.expression"/>
+    <service id="fos_user.doctrine_registry" alias="doctrine" public="false"/>
+    <service id="FOS\UserBundle\Security\LoginManagerInterface" alias="fos_user.security.login_manager" public="false"/>
+    <service id="FOS\UserBundle\Util\TokenGeneratorInterface" alias="fos_user.util.token_generator.default" public="false"/>
+    <service id="FOS\UserBundle\Util\PasswordUpdaterInterface" alias="fos_user.util.password_updater" public="false"/>
+    <service id="FOS\UserBundle\Util\CanonicalFieldsUpdater" alias="fos_user.util.canonical_fields_updater" public="false"/>
+    <service id="FOS\UserBundle\Model\UserManagerInterface" alias="fos_user.user_manager.default" public="false"/>
+    <service id="fos_user.util.email_canonicalizer" alias="fos_user.util.canonicalizer.default"/>
+    <service id="fos_user.util.username_canonicalizer" alias="fos_user.util.canonicalizer.default"/>
+    <service id="fos_user.util.token_generator" alias="fos_user.util.token_generator.default"/>
+    <service id="fos_user.user_manager" alias="fos_user.user_manager.default" public="true"/>
+    <service id="fos_user.mailer" alias="fos_user.mailer.default"/>
+    <service id="fos_user.session" alias="session" public="false"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>
     <service id="service_locator._fpuy7b" alias="2_ServiceLocator~cbme8u0" public="false"/>
+    <service id="service_locator.ml7rum7" alias="1_ServiceLocator~rmdbwwb" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.logging.inner" alias="translator.default" public="false"/>
     <service id="translator.data_collector.inner" alias="translator.logging" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
     <service id="controller_resolver" alias="debug.controller_resolver" public="false"/>
     <service id="argument_resolver" alias="debug.argument_resolver" public="false"/>
+    <service id="security.access.decision_manager" alias="debug.security.access.decision_manager" public="false"/>
     <service id="console.command.doctrine_bundle_doctrinecachebundle_command_containscommand" alias="doctrine_cache.contains_command" public="true"/>
     <service id="console.command.doctrine_bundle_doctrinecachebundle_command_deletecommand" alias="doctrine_cache.delete_command" public="true"/>
     <service id="console.command.doctrine_bundle_doctrinecachebundle_command_flushcommand" alias="doctrine_cache.flush_command" public="true"/>
